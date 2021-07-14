@@ -16,7 +16,11 @@ class Header extends Component {
 
   handleKeyPress = (e) => {
     if (e.key === "Enter") {
+      console.log(this.props);
       this.props.setMovies(this.state.newMovieName);
+      // <Link to="/"></Link>
+      // window.history.replaceState({}, "", "/");
+      // this.props.history("/");
     }
   };
 
@@ -24,7 +28,9 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="logo">
+          <Link to="/">
           <img src="logo.svg" alt="" />
+          </Link>
         </div>
         <div className="search-btn">
           <input

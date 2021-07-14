@@ -4,6 +4,7 @@ import "./Movies.css";
 
 class Movies extends Component {
   state = {};
+  
   render() {
     return (
       <div className="movies">

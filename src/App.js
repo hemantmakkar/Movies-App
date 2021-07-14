@@ -15,6 +15,7 @@ class App extends Component {
     currentMovie: "avengers",
     pages: [],
     currPage: 1,
+    favourites: [],
   };
 
   async componentDidMount() {
@@ -103,6 +104,18 @@ class App extends Component {
     });
   };
 
+  setFavourites = (movieObj) => {
+    let favourites = this.state.favourites;
+    const idx = favourites.findIndex((movie) => movie.id === movieObj.id);
+    if (idx !== -1) {
+      favourites.splice(idx, 1);
+    } else {
+      favourites.push(movieObj);
+    }
+
+    this.setState({ favourites: favourites });
+  };
+
   render() {
     return (
       <Router>
@@ -128,9 +141,33 @@ class App extends Component {
               )}
             </Route>
 
-            <Route path="/fav" exact component={Favourite}></Route>
+            <Route
+              path="/fav"
+              exact
+              render={(props) => {
+                return (
+                  <Favourite
+                    {...props}
+                    favourites={this.state.favourites}
+                  ></Favourite>
+                );
+              }}
+            ></Route>
 
-            <Route path="/moviepage" exact component={MoviePage}></Route>
+            <Route
+              path="/moviepage"
+              exact
+              render={(props) => {
+                console.log("Inside app moviepage route");
+                return (
+                  <MoviePage
+                    {...props}
+                    favourites={this.state.favourites}
+                    setFavourites={this.setFavourites}
+                  ></MoviePage>
+                );
+              }}
+            ></Route>
           </Switch>
         </div>
       </Router>

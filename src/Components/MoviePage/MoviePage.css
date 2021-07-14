@@ -33,3 +33,19 @@
 .movie-trailer div{
     height: 100%;
 }
+
+.heart {
+    height: 50px;
+}
+
+.like-btn {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 50px;
+    right: 200px;
+}
+
+.like-btn:active {
+    transform: translateY(4px);
+  }
