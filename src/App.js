@@ -26,7 +26,7 @@ class App extends Component {
     let data = await axios.get(API_URL + "/search/movie", {
       params: { api_key: API_KEY, page: 1, query: this.state.currentMovie },
     });
-    console.log(data);
+    // console.log(data);
     let moviesData = data.data.results.slice(0, 10);
     let pagesCount = data.data.total_pages; //3
     let pages = [];
@@ -40,6 +40,7 @@ class App extends Component {
   }
 
   setMovies = async (newMovieName) => {
+    // console.log("inside set movies");
     let data = await axios.get(API_URL + "/search/movie", {
       params: { api_key: API_KEY, page: 1, query: newMovieName },
     });
@@ -64,7 +65,7 @@ class App extends Component {
         query: this.state.currentMovie,
       },
     });
-    console.log(data);
+    // console.log(data);
     let moviesData = data.data.results.slice(0, 10);
     this.setState({
       moviesData: moviesData,
@@ -80,7 +81,7 @@ class App extends Component {
         query: this.state.currentMovie,
       },
     });
-    console.log(data);
+    // console.log(data);
     let moviesData = data.data.results.slice(0, 10);
     this.setState({
       moviesData: moviesData,
@@ -96,7 +97,7 @@ class App extends Component {
         query: this.state.currentMovie,
       },
     });
-    console.log(data);
+    // console.log(data);
     let moviesData = data.data.results.slice(0, 10);
     this.setState({
       moviesData: moviesData,
@@ -118,6 +119,7 @@ class App extends Component {
 
   render() {
     return (
+      
       <Router>
         <div className="App">
           <Header setMovies={this.setMovies}></Header>
@@ -158,7 +160,7 @@ class App extends Component {
               path="/moviepage"
               exact
               render={(props) => {
-                console.log("Inside app moviepage route");
+                // console.log("Inside app moviepage route");
                 return (
                   <MoviePage
                     {...props}

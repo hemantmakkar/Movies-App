@@ -48,7 +48,7 @@ class MoviePage extends Component {
     let { title, tagline, vote_average, poster_path, overview } =
       this.props.location.state;
 
-    console.log(this.props);
+    // console.log(this.props);
 
     return (
       <div className="movie-page">

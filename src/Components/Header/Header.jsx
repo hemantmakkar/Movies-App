@@ -1,8 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+/* With withRouter we get access to this.props.history which we can't have bcz we are in header. Generally we have access to that when we use route to render component so to change url we use it*/
+import { Link, withRouter } from "react-router-dom";
 import "./Header.css";
 
 class Header extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.myRef = React.createRef();
+  // }
+
   state = {
     newMovieName: "",
   };
@@ -16,11 +22,10 @@ class Header extends Component {
 
   handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      console.log(this.props);
+      // console.log(this.props);
       this.props.setMovies(this.state.newMovieName);
-      // <Link to="/"></Link>
-      // window.history.replaceState({}, "", "/");
-      // this.props.history("/");
+      this.props.history.push('/');
+      // this.myRef.current.click();      // also we can use this in img to redirect url
     }
   };
 
@@ -29,7 +34,7 @@ class Header extends Component {
       <div className="header">
         <div className="logo">
           <Link to="/">
-          <img src="logo.svg" alt="" />
+            <img src="logo.svg" alt="" />
           </Link>
         </div>
         <div className="search-btn">
@@ -57,4 +62,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
